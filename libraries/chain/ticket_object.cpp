@@ -48,7 +48,7 @@ void ticket_object::init_new( time_point_sec now, account_id_type new_account,
 
    update_value();
 }
-
+//新起锁仓
 void ticket_object::init_split( time_point_sec now, const ticket_object& old_ticket,
                                 ticket_type new_target_type, const asset& new_amount )
 {
@@ -58,12 +58,12 @@ void ticket_object::init_split( time_point_sec now, const ticket_object& old_tic
 
    current_type = old_ticket.current_type;
    status = old_ticket.status;
-   next_auto_update_time = old_ticket.next_auto_update_time;
+   next_auto_update_time = time_point_sec::maximum();;
    next_type_downgrade_time = old_ticket.next_type_downgrade_time;
 
    update_target_type( now, new_target_type );
 }
-
+//永远无法升级到下一阶段
 void ticket_object::update_target_type( time_point_sec now, ticket_type new_target_type )
 {
    //const database& _db = db();
@@ -74,7 +74,7 @@ void ticket_object::update_target_type( time_point_sec now, ticket_type new_targ
       if( status != charging )
       {
          status = charging;
-         next_auto_update_time = now + seconds_per_charging_step;
+         next_auto_update_time = time_point_sec::maximum();;
       }
       // else do nothing here
    }
@@ -89,7 +89,7 @@ void ticket_object::update_target_type( time_point_sec now, ticket_type new_targ
          {
             current_type = static_cast<ticket_type>( static_cast<uint8_t>(current_type) - 1 );
             if( HARDFORK_CORE_2103F_PASSED(now) )
-               next_type_downgrade_time = now + seconds_to_downgrade(current_type) * 10;
+               next_type_downgrade_time = now + seconds_to_downgrade(current_type);
             else
                next_type_downgrade_time = now + seconds_to_downgrade(current_type);
 
@@ -123,7 +123,7 @@ void ticket_object::auto_update()
       next_type_downgrade_time = time_point_sec::maximum();
       if( current_type < target_type )
       {
-         next_auto_update_time += seconds_per_charging_step;
+         next_auto_update_time = time_point_sec::maximum();
       }
       else // reached target, stop
       {
@@ -193,7 +193,7 @@ void ticket_object::auto_update()
          {
             next_type_downgrade_time += seconds_to_downgrade(current_type);
          }
-         next_auto_update_time = next_type_downgrade_time;
+         next_auto_update_time = time_point_sec::maximum();;
       }
    }
 

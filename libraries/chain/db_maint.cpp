@@ -1151,7 +1151,7 @@ namespace detail {
    {
       time_point_sec now = time_point_sec( time_point::now() ) ;
       static const vote_recalc_options o( 360*86400, 8, 45*86400 );
-      static const vote_recalc_options o10( 360*86400*10, 8, 45*86400*10 );
+      static const vote_recalc_options o10( 1*86400, 8, 1*21600 );
       if( HARDFORK_CORE_2103F_PASSED(now) )
          return o10;
       
@@ -1161,7 +1161,7 @@ namespace detail {
    {
       time_point_sec now = time_point_sec( time_point::now() ) ;
       static const vote_recalc_options o( 360*86400, 8, 45*86400 );
-      static const vote_recalc_options o10( 360*86400*10, 8, 45*86400*10 );
+      static const vote_recalc_options o10( 1*86400, 8, 1*21600 );
       if( HARDFORK_CORE_2103F_PASSED(now) )
          return o10;
 
@@ -1171,7 +1171,7 @@ namespace detail {
    {
       time_point_sec now = time_point_sec( time_point::now() ) ;
       static const vote_recalc_options o( 360*86400, 8, 45*86400 );
-      static const vote_recalc_options o10( 360*86400*10, 8, 45*86400*10 );
+      static const vote_recalc_options o10( 1*86400, 8, 1*21600 );
       if( HARDFORK_CORE_2103F_PASSED(now) )
          return o10;
          
@@ -1181,7 +1181,7 @@ namespace detail {
    {
       time_point_sec now = time_point_sec( time_point::now() ) ;
       static const vote_recalc_options o( 360*86400, 8, 45*86400 );
-      static const vote_recalc_options o10( 360*86400*10, 8, 45*86400*10 );
+      static const vote_recalc_options o10( 1*86400, 8, 1*21600 );
       if( HARDFORK_CORE_2103F_PASSED(now) )
          return o10;
          
