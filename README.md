@@ -1,4 +1,4 @@
-BitShares Core
+New BitShares Core
 ==============
 
 [Build Status](https://travis-ci.org/bitshares-cnvote/bitshares-core/branches):
@@ -40,7 +40,7 @@ We recommend building on Ubuntu 18.04 LTS (64-bit)
 **Build Script:**
 
     git clone https://github.com/bitshares-cnvote/newbitshares-core.git
-    cd bitshares-core
+    cd newbitshares-core
     git checkout master # may substitute "master" with current release tag
     git submodule update --init --recursive
     mkdir build
@@ -60,22 +60,22 @@ We recommend building on Ubuntu 18.04 LTS (64-bit)
 
 **NOTE:**
 
-* BitShares requires a 64-bit operating system to build, and will not build on a 32-bit OS. Tested operating systems:
+* New BitShares requires a 64-bit operating system to build, and will not build on a 32-bit OS. Tested operating systems:
   * Linux (heavily tested with Ubuntu 18.04 LTS and Ubuntu 16.04 LTS)
   * macOS (various versions)
   * Windows (various versions, Visual Studio and MinGW)
   * OpenBSD (various versions)
 
-* BitShares requires [Boost](http://www.boost.org/) libraries to build, supports version `1.58` to `1.69`.
+* New BitShares requires [Boost](http://www.boost.org/) libraries to build, supports version `1.58` to `1.69`.
 Newer versions may work, but have not been tested.
 If your system came pre-installed with a version of Boost libraries that you do not wish to use, you may
-manually build your preferred version and use it with BitShares by specifying it on the CMake command line.
+manually build your preferred version and use it with New BitShares by specifying it on the CMake command line.
 
   Example: `cmake -DBOOST_ROOT=/path/to/boost ..`
 
-* BitShares requires [OpenSSL](https://www.openssl.org/) libraries to build, supports version `1.0.2` to `1.1.1`.
+* New BitShares requires [OpenSSL](https://www.openssl.org/) libraries to build, supports version `1.0.2` to `1.1.1`.
 If your system came pre-installed with a version of OpenSSL libraries that you do not wish to use, you may
-manually build your preferred version and use it with BitShares by specifying it on the CMake command line.
+manually build your preferred version and use it with New BitShares by specifying it on the CMake command line.
 
   Example: `cmake -DOPENSSL_ROOT_DIR=/path/to/openssl ..`
 
@@ -92,7 +92,7 @@ It may take several hours to fully synchronize the blockchain.
 
 You can exit the node using `Ctrl+C`. Please be aware that the node may need some time (usually a few minutes) to exit cleanly, please be patient.
 
-**IMPORTANT:** By default the node will start in reduced memory mode by using some of the commands detailed in [Memory reduction for nodes](https://github.com/bitshares/bitshares-core/wiki/Memory-reduction-for-nodes).
+**IMPORTANT:** By default the node will start in reduced memory mode by using some of the commands detailed in [Memory reduction for nodes](https://github.com/bitshares-cnvote/newbitshares-core/wiki/Memory-reduction-for-nodes).
 In order to run a full node with all the account histories (which is usually not necessary) you need to remove `partial-operations` and `max-ops-per-account` from your config file. Please note that currently(2018-10-17) a full node will need more than 160GB of RAM to operate and required memory is growing fast. Consider the following table as **minimal requirements** before running a node:
 
 | Default | Full | Minimal  | ElasticSearch
